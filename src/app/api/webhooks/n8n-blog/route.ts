@@ -62,11 +62,18 @@ export async function POST(req: NextRequest) {
 
             if (imageUrl) {
                 // Download image from URL if n8n sends a link
-                const imgRes = await fetch(imageUrl);
-                if (imgRes.ok) {
-                    imageBuffer = Buffer.from(await imgRes.arrayBuffer());
-                    imageFileName = imageUrl.split("/").pop() || "image.jpg";
-                    imageMimeType = imgRes.headers.get("content-type") || "image/jpeg";
+                try {
+                    const imgRes = await fetch(imageUrl);
+                    if (imgRes.ok) {
+                        imageBuffer = Buffer.from(await imgRes.arrayBuffer());
+                        imageFileName = imageUrl.split("/").pop() || "image.jpg";
+                        imageMimeType = imgRes.headers.get("content-type") || "image/jpeg";
+                    } else {
+                        console.warn(`Failed to fetch image from ${imageUrl}: ${imgRes.statusText}`);
+                    }
+                } catch (imgError) {
+                    console.error("Error fetching image:", imgError);
+                    // Proceed without image
                 }
             } else if (body.imageBase64) {
                 // Handle base64 if needed
