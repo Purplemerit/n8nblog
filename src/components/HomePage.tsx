@@ -117,7 +117,7 @@ export default function HomePage() {
         {/* Blog Header */}
         <section className={styles.blogHeader}>
           <h1 className={styles.blogMainTitle}>Latest Blog Posts</h1>
-          <p className={styles.blogSubtitle}>Fresh content automatically posted every 6 hours</p>
+          <p className={styles.blogSubtitle}>Fresh updates from our editorial team</p>
         </section>
 
         {/* Blog Grid */}

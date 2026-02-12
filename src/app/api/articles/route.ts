@@ -23,9 +23,10 @@ export async function GET(req: NextRequest) {
         const articles = await prisma.article.findMany({
             where,
             take: limit,
-            orderBy: {
-                publishedAt: 'desc',
-            },
+            orderBy: [
+                { publishedAt: 'desc' },
+                { createdAt: 'desc' }
+            ],
             include: {
                 category: true,
             },
