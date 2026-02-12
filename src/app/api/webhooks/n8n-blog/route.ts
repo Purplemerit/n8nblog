@@ -41,15 +41,31 @@ export async function POST(req: NextRequest) {
             const body = await req.json();
             title = body.title;
             content = body.content;
-            categorySlug = body.category || "news";
+
+            // Handle category which might be an array
+            const rawCategory = body.category || body.categories;
+            if (Array.isArray(rawCategory)) {
+                categorySlug = rawCategory.length > 0 ? rawCategory[0] : "news";
+            } else if (typeof rawCategory === "string") {
+                categorySlug = rawCategory;
+            } else {
+                categorySlug = "news";
+            }
+
+            // Normalize slug
+            categorySlug = categorySlug.toLowerCase().replace(/\s+/g, '-');
+
             excerpt = body.excerpt || "";
 
-            if (body.imageUrl) {
+            // Check for image URL in different possible fields
+            const imageUrl = body.imageUrl || body.featuredImageUrl;
+
+            if (imageUrl) {
                 // Download image from URL if n8n sends a link
-                const imgRes = await fetch(body.imageUrl);
+                const imgRes = await fetch(imageUrl);
                 if (imgRes.ok) {
                     imageBuffer = Buffer.from(await imgRes.arrayBuffer());
-                    imageFileName = body.imageUrl.split("/").pop() || "image.jpg";
+                    imageFileName = imageUrl.split("/").pop() || "image.jpg";
                     imageMimeType = imgRes.headers.get("content-type") || "image/jpeg";
                 }
             } else if (body.imageBase64) {

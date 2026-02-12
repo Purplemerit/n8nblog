@@ -2,6 +2,7 @@ import styles from './Article.module.css';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
+import DOMPurify from 'isomorphic-dompurify';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -48,8 +49,9 @@ export default async function ArticlePage({ params }: PageProps) {
 
   const publishDate = formatDate(article.publishedAt || article.createdAt);
 
-  // Calculate reading time
-  const calculateReadTime = (text: string): string => {
+  // Calculate reading time (strip HTML tags for word count)
+  const calculateReadTime = (html: string): string => {
+    const text = html.replace(/<[^>]*>/g, '');
     const wordsPerMinute = 200;
     const words = text.split(/\s+/).length;
     const minutes = Math.ceil(words / wordsPerMinute);
@@ -74,6 +76,9 @@ export default async function ArticlePage({ params }: PageProps) {
   };
 
   const displayImage = article.image || getFallbackImage(article.category.slug);
+
+  // Sanitize content
+  const sanitizedContent = DOMPurify.sanitize(article.content);
 
   return (
     <div className={styles.page}>
@@ -116,11 +121,10 @@ export default async function ArticlePage({ params }: PageProps) {
 
         {/* Article Content */}
         <article className={styles.article}>
-          <div className={styles.articleContent}>
-            {article.content.split('\n\n').map((para, i) => (
-              para.trim() && <p key={i} className={styles.paragraph}>{para.trim()}</p>
-            ))}
-          </div>
+          <div
+            className={styles.articleContent}
+            dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+          />
 
           {/* Source Attribution */}
           {article.sourceName && (
