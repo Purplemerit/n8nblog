@@ -19,7 +19,7 @@ async function checkSystemStatus() {
     const aiRephrased = await prisma.article.count({ where: { published: true, aiRephrased: true } });
     console.log(`   ✅ Total published blog posts: ${totalArticles}`);
     console.log(`   ✅ AI-rephrased posts: ${aiRephrased}`);
-    console.log(`   📊 Percentage AI-generated: ${Math.round((aiRephrased/totalArticles)*100)}%\n`);
+    console.log(`   📊 Percentage AI-generated: ${Math.round((aiRephrased / totalArticles) * 100)}%\n`);
 
     // 3. Check by Category
     console.log('3️⃣ BLOGS BY CATEGORY');
@@ -65,15 +65,14 @@ async function checkSystemStatus() {
 
     // 7. Automation Status
     console.log('7️⃣ AUTOMATION STATUS');
-    console.log('   ✅ Cron Schedule: Every 6 hours (0 */6 * * *)');
-    console.log('   ✅ Auto-fetch: Enabled');
+    console.log('   ❌ Cron Schedule: Disabled');
+    console.log('   ✅ Auto-fetch: Manual Only');
     console.log('   ✅ AI Rephrasing: Enabled');
     console.log('   ✅ Auto-publish: Enabled\n');
 
     // 8. System URLs
     console.log('8️⃣ WEBSITE ACCESS');
     console.log('   🌐 Homepage: http://localhost:3000');
-    console.log('   🔗 Cron Endpoint: /api/cron/fetch-and-process');
     console.log('');
 
     console.log('='.repeat(80));
@@ -81,8 +80,7 @@ async function checkSystemStatus() {
     console.log('='.repeat(80) + '\n');
 
     console.log('💡 NEXT STEPS:');
-    console.log('   1. Visit http://localhost:3000 (clear cache first!)');
-    console.log('   2. Cron auto-generates blogs every 6 hours');
+    console.log('   2. Visit http://localhost:3000 (clear cache first!)');
     console.log('   3. Deploy to Vercel for production');
     console.log('');
 

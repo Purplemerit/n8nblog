@@ -119,7 +119,6 @@ async function main() {
     console.log('  1. Add your Gemini API key to .env file');
     console.log('  2. Run the dev server: npm run dev');
     console.log('  3. Visit http://localhost:3000 to see your blog posts');
-    console.log('  4. The cron job will run every 12 hours to fetch new content');
 
   } catch (error: any) {
     console.error('\n❌ Import failed:', error.message);

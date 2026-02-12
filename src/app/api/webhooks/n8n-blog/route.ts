@@ -103,16 +103,20 @@ export async function POST(req: NextRequest) {
             });
         }
 
-        // 3. Get Author (Editorial Team)
-        const author = await prisma.user.findUnique({
+        // 3. Get or Create Author (Editorial Team)
+        let author = await prisma.user.findUnique({
             where: { email: "editorial@newsweb.com" },
         });
 
         if (!author) {
-            return NextResponse.json(
-                { error: "Editorial author not found. Please run seed." },
-                { status: 500 }
-            );
+            console.log("Creating missing editorial author...");
+            author = await prisma.user.create({
+                data: {
+                    email: "editorial@newsweb.com",
+                    name: "Editorial Team",
+                    role: "SYSTEM",
+                },
+            });
         }
 
         // 4. Create Article
@@ -125,6 +129,7 @@ export async function POST(req: NextRequest) {
                 excerpt: excerpt || content.substring(0, 150) + "...",
                 image: s3ImageUrl,
                 published: true,
+                publishedAt: new Date(), // Important for sorting!
                 categoryId: category.id,
                 authorId: author.id,
             },
