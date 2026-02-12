@@ -125,18 +125,135 @@
   margin-bottom: 56px;
 }
 
-.paragraph {
+/* Heading Styles */
+.articleContent h1,
+.articleContent h2,
+.articleContent h3,
+.articleContent h4,
+.articleContent h5,
+.articleContent h6 {
+  font-family: var(--font-fraunces);
+  color: #0f172a;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.articleContent h1 {
+  font-size: 2.5rem;
+}
+
+.articleContent h2 {
+  font-size: 2rem;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 0.5rem;
+}
+
+.articleContent h3 {
+  font-size: 1.75rem;
+}
+
+.articleContent h4 {
+  font-size: 1.5rem;
+}
+
+/* Paragraph Styles */
+.articleContent p {
   font-family: var(--font-ibm-plex-sans);
   font-size: 1.125rem;
   line-height: 1.9;
   color: #1e293b;
-  margin: 0 0 1.75rem 0;
+  margin-bottom: 1.75rem;
 }
 
-.paragraph:first-of-type {
+.articleContent p:first-of-type {
   font-size: 1.25rem;
   line-height: 1.85;
   color: #0f172a;
+}
+
+/* List Styles */
+.articleContent ul,
+.articleContent ol {
+  margin-bottom: 1.75rem;
+  padding-left: 1.5rem;
+  font-family: var(--font-ibm-plex-sans);
+  font-size: 1.125rem;
+  color: #1e293b;
+  line-height: 1.8;
+}
+
+.articleContent li {
+  margin-bottom: 0.5rem;
+}
+
+/* Blockquote */
+.articleContent blockquote {
+  font-family: var(--font-fraunces);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #475569;
+  border-left: 4px solid #3b82f6;
+  padding: 1rem 0 1rem 2rem;
+  margin: 2.5rem 0;
+  background: #f8fafc;
+  border-radius: 0 12px 12px 0;
+}
+
+/* Code Blocks */
+.articleContent pre {
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 1.5rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin-bottom: 1.75rem;
+  font-family: var(--font-ibm-plex-mono);
+  font-size: 0.9375rem;
+}
+
+.articleContent code {
+  font-family: var(--font-ibm-plex-mono);
+  background: #f1f5f9;
+  color: #0f172a;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.articleContent pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+/* Images in content */
+.articleContent img {
+  border-radius: 12px;
+  margin: 2.5rem 0;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Links */
+.articleContent a {
+  color: #3b82f6;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+  transition: all 0.2s;
+}
+
+.articleContent a:hover {
+  color: #2563eb;
+  background: #dbeafe;
+}
+
+/* Divider */
+.articleContent hr {
+  border: 0;
+  height: 2px;
+  background: #e2e8f0;
+  margin: 3rem 0;
 }
 
 /* Source Box */
