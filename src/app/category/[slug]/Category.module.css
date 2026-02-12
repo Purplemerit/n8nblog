@@ -1,0 +1,275 @@
+.container {
+    background-color: #FEFBF6;
+    min-height: 100vh;
+    padding-bottom: 80px;
+    color: #1F1F1F;
+}
+
+.heroSection {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.breadcrumb {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.headerTitle {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    color: #1F1F1F;
+}
+
+.headerDescription {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: #444;
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 60px;
+}
+
+.featuredGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.featuredMain {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.featuredImageWrapper {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+}
+
+.featuredImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.featuredImage:hover {
+    transform: scale(1.02);
+}
+
+.featuredContent {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.metaTags {
+    display: flex;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.featuredTitle {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.featuredTitle:hover {
+    color: #444;
+}
+
+.featuredExcerpt {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.6;
+    max-width: 90%;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    border-left: 1px solid #E5E5E5;
+    padding-left: 40px;
+}
+
+.sidebarTitle {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #1F1F1F;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.trendingItem {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.trendingItem:last-child {
+    border-bottom: none;
+}
+
+.trendingMeta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.trendingTitle {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+.trendingTitle:hover {
+    text-decoration: underline;
+}
+
+/* Regular Grid */
+.articleGridSection {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.gridItem {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.gridImageWrapper {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+}
+
+.gridImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gridImageWrapper:hover .gridImage {
+    transform: scale(1.05);
+}
+
+.gridTitle {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    line-height: 1.3;
+    cursor: pointer;
+}
+
+.gridTitle:hover {
+    color: #555;
+}
+
+.gridExcerpt {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+    .featuredGrid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .sidebar {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid #E5E5E5;
+        padding-top: 30px;
+        order: 2;
+    }
+
+    .featuredMain {
+        order: 1;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .heroSection {
+        padding: 40px 1.25rem;
+    }
+
+    .headerTitle {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+
+    .headerDescription {
+        font-size: 1rem;
+        margin-bottom: 40px;
+    }
+
+    .featuredImageWrapper {
+        height: 350px;
+    }
+
+    .featuredTitle {
+        font-size: 1.75rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .articleGridSection {
+        padding: 0 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .headerTitle {
+        font-size: 2rem;
+    }
+
+    .featuredImageWrapper {
+        height: 250px;
+    }
+
+    .gridImageWrapper {
+        height: 200px;
+    }
+}

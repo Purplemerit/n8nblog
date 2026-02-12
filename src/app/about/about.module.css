@@ -1,0 +1,293 @@
+.container {
+    width: 100%;
+    margin: 0 auto;
+    background: #FEFBF6;
+    color: #1F1F1F;
+    overflow-x: hidden;
+}
+
+/* Hero Image */
+.heroImageWrapper {
+    width: 100%;
+    /* Keep it contained somewhat like image */
+    max-width: 1360px;
+    height: 400px;
+    margin: 40px auto 0;
+    padding: 0 20px;
+}
+
+.heroImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* No border radius in image? It looks sharp */
+}
+
+/* Intro Section */
+.introSection {
+    max-width: 1360px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.mainHeading {
+    font-family: var(--font-heading);
+    font-size: 3.2rem;
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: 50px;
+    color: #1F1F1F;
+}
+
+.introGrid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.introText {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 40px;
+    max-width: 90%;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    row-gap: 30px;
+}
+
+.statNumber {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #1F1F1F;
+}
+
+.statLabel {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.introImages {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.introImage {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+/* Story Section */
+.storySection {
+    max-width: 1360px;
+    margin: 100px auto;
+    padding: 0 20px;
+}
+
+.sectionTitle {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+
+.storyLayout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 40px;
+}
+
+.empowerHeading {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    line-height: 1.25;
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+.storyParagraph {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+.centerImage {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    object-fit: cover;
+}
+
+.missionBlock {
+    margin-bottom: 40px;
+}
+
+.missionTitle {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.missionText {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* Trusted Source Section */
+.trustedSection {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    max-width: 1360px;
+    margin: 100px auto;
+    padding: 0 20px;
+    align-items: center;
+}
+
+.trustedHeading {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.trustedParagraph {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 40px;
+}
+
+.journalistStats {
+    border-top: 1px solid #ddd;
+    padding-top: 24px;
+}
+
+.statBig {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.statBigLabel {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 20px;
+    max-width: 200px;
+}
+
+.avatars {
+    display: flex;
+}
+
+.avatarImg {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 3px solid #FEFBF6;
+    background-size: cover;
+    background-position: center;
+    margin-left: -12px;
+}
+
+.avatarImg:first-child {
+    margin-left: 0;
+}
+
+.trustedImage {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+/* FAQ Section */
+.faqSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1360px;
+    margin: 0 auto 100px;
+    padding: 0 20px;
+    gap: 60px;
+}
+
+.faqHeading {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.questionsList {
+    display: flex;
+    flex-direction: column;
+}
+
+.questionRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #E0E0E0;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: #1F1F1F;
+    cursor: pointer;
+}
+
+.arrowIcon {
+    font-size: 1.2rem;
+    color: #666;
+    font-weight: 300;
+}
+
+.faqImage {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .introGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .storyLayout {
+        grid-template-columns: 1fr;
+    }
+
+    .trustedSection {
+        grid-template-columns: 1fr;
+    }
+
+    .faqSection {
+        grid-template-columns: 1fr;
+    }
+
+    .introImages {
+        margin-top: 30px;
+    }
+
+    .mainHeading {
+        font-size: 2.5rem;
+    }
+}

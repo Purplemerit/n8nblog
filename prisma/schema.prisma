@@ -1,0 +1,154 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id              String    @id @default(cuid())
+  email           String    @unique
+  password        String?
+  name            String?
+  image           String?
+  role            String    @default("USER")
+  emailVerified   DateTime?
+  resetOTP        String?
+  resetOTPExpires DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  articles        Article[]
+  comments        Comment[]
+  accounts        Account[]
+  sessions        Session[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Category {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  slug      String    @unique
+  articles  Article[]
+}
+
+model Article {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  content     String   @db.Text
+  excerpt     String?
+  image       String?
+  featured    Boolean  @default(false)
+  published   Boolean  @default(false)
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id])
+  authorId    String
+  author      User     @relation(fields: [authorId], references: [id])
+  comments    Comment[]
+
+  // Blog-specific fields for RSS rephrasing
+  sourceUrl      String?  // Original RSS article URL
+  sourceId       String?  // Reference to NewsSource
+  sourceName     String?  // Name of the source for attribution
+  rssGuid        String?  @unique // RSS guid for duplicate detection
+  aiRephrased    Boolean  @default(false) // Track if AI-rephrased
+  rawContent     String?  @db.Text // Original RSS content before AI
+  publishedAt    DateTime? // Actual publish date from RSS
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([rssGuid])
+  @@index([publishedAt])
+  @@index([categoryId, published, publishedAt])
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String
+  articleId String
+  article   Article  @relation(fields: [articleId], references: [id])
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model NewsSource {
+  id        String   @id @default(cuid())
+  country   String   // e.g. "INDIA", "UNITED_STATES"
+  name      String   // e.g. "The Hindu"
+  category  String   // e.g. "homepage", "news", "world", etc.
+  url       String
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([country, name, category])
+}
+
+model Analytics {
+  id        String   @id @default(cuid())
+  path      String   @unique
+  views     Int      @default(0)
+  avgTime   Float    @default(0) // average time spent in seconds
+  totalTime Float    @default(0) // total time spent in seconds
+  sessions  Int      @default(0) // total number of sessions
+  updatedAt DateTime @updatedAt
+}
+
+model Newsletter {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+model ProcessingLog {
+  id            String   @id @default(cuid())
+  jobType       String   // "scheduled_fetch", "ai_rephrase", "manual_trigger"
+  status        String   // "started", "success", "failed", "partial"
+  articlesCount Int      @default(0)
+  errors        String?  @db.Text // JSON array of errors
+  startedAt     DateTime @default(now())
+  completedAt   DateTime?
+  metadata      String?  @db.Text // JSON metadata about the job
+
+  @@index([startedAt])
+  @@index([status])
+}

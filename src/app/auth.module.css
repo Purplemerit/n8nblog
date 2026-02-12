@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
+.authPage {
+    --cream-bg: #FEFBF6;
+    --dark-text: #1F1F1F;
+    --medium-text: #4A4A4A;
+    --light-text: #666666;
+    --border-color: #E5E5E5;
+    --button-bg: #2D3748;
+    --button-hover: #1A202C;
+    --white: #FFFFFF;
+    --error-red: #DC2626;
+    --focus-ring: #3B82F6;
+    display: flex;
+    gap: 24px;
+    height: 100vh;
+    width: 100%;
+    background-color: var(--cream-bg);
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow: hidden;
+    padding: 16px;
+}
+
+.authPage * {
+    box-sizing: border-box;
+}
+
+/* Section Cards */
+.leftSection,
+.rightSection {
+    flex: 1;
+    background: var(--white);
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.leftSection {
+    padding: 32px 40px;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.8s ease-out;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
+}
+
+.leftSection::-webkit-scrollbar {
+    width: 6px;
+}
+
+.leftSection::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.rightSection {
+    background-color: #E8E8E8;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.authImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.formContainer {
+    width: 100%;
+    max-width: 380px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-bottom: 2px;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    color: var(--light-text);
+    font-size: 0.9rem;
+}
+
+/* Form Styles */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.label {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    padding-left: 4px;
+}
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input {
+    width: 100%;
+    padding: 10px 16px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 99px;
+    font-size: 0.85rem;
+    color: var(--dark-text);
+    outline: none;
+    transition: all 0.2s ease;
+    background: var(--white);
+}
+
+.input:focus {
+    border-color: var(--dark-text);
+    box-shadow: 0 0 0 3px rgba(31, 31, 31, 0.05);
+}
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-text-fill-color: var(--dark-text) !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.passwordToggle {
+    position: absolute;
+    right: 18px;
+    background: none;
+    border: none;
+    color: var(--light-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+}
+
+/* OTP Input Specific */
+.otpContainer {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.otpInput {
+    width: 50px;
+    height: 60px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Fraunces', serif;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.otpInput:focus {
+    border-color: var(--button-bg);
+    box-shadow: 0 0 0 4px rgba(45, 55, 72, 0.1);
+}
+
+/* Options */
+.optionsRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-top: -4px;
+}
+
+.rememberMe {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--light-text);
+    cursor: pointer;
+}
+
+.checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--button-bg);
+    cursor: pointer;
+}
+
+.forgotPassword {
+    color: var(--light-text);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Buttons */
+.submitBtn {
+    width: 100%;
+    padding: 12px;
+    background: var(--button-bg);
+    color: var(--white);
+    border: none;
+    border-radius: 99px;
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 4px;
+}
+
+.submitBtn:hover:not(:disabled) {
+    background: var(--button-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.submitBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--light-text);
+    font-size: 0.8rem;
+    margin: 12px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border-color);
+}
+
+/* Social */
+.socialBtns {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.socialBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 99px;
+    background: var(--white);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--medium-text);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.socialBtn:hover {
+    background: #fafafa;
+    border-color: #d1d1d1;
+}
+
+.socialBtn img {
+    width: 18px;
+    height: 18px;
+}
+
+/* Messages */
+.errorMessage {
+    background: #fff5f5;
+    color: var(--error-red);
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    border: 1px solid #feb2b2;
+    text-align: center;
+}
+
+.successMessage {
+    background: #f0fdf4;
+    color: #166534;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    border: 1px solid #bbf7d0;
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 12px;
+    color: var(--light-text);
+    font-size: 0.8rem;
+}
+
+.footerLink {
+    color: var(--dark-text);
+    font-weight: 700;
+    text-decoration: none;
+    margin-left: 4px;
+}
+
+.footerLink:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .rightSection {
+        display: none;
+    }
+
+    .leftSection {
+        max-width: 100%;
+        border-radius: 0;
+    }
+
+    .authPage {
+        padding: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .leftSection {
+        padding: 24px;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+}

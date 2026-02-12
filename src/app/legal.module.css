@@ -1,0 +1,181 @@
+.container {
+    background-color: #FEFBF6;
+    min-height: 100vh;
+    padding-bottom: 100px;
+    color: #1F1F1F;
+}
+
+.header {
+    text-align: center;
+    padding: 80px 20px 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #1F1F1F;
+}
+
+.subtitle {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.date {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.heroImageWrapper {
+    max-width: 1200px;
+    height: 500px;
+    margin: 40px auto 80px;
+    padding: 0 40px;
+}
+
+.heroImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Image in reference looks like it might have a slight filter or just high quality b/w style */
+}
+
+.contentWrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 250px;
+    /* Content + Sidebar */
+    gap: 80px;
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sectionTitle {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1F1F1F;
+}
+
+.text {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #444;
+}
+
+.text p {
+    margin-bottom: 16px;
+}
+
+.sidebar {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+.sidebarTitle {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #1F1F1F;
+    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+}
+
+.tocList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tocItem {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.2s;
+    text-decoration: none;
+}
+
+.tocItem:hover {
+    color: #1F1F1F;
+    text-decoration: underline;
+}
+
+/* Contact Box specific style */
+.contactBox {
+    background: #fff;
+    border: 1px solid #E5E5E5;
+    padding: 24px;
+    margin-top: 20px;
+    max-width: 400px;
+}
+
+.contactLabel {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.contactLink {
+    display: block;
+    font-family: var(--font-body);
+    color: #444;
+    text-decoration: none;
+    margin-bottom: 4px;
+    font-size: 0.95rem;
+}
+
+.contactLink:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .contentWrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: none;
+        /* Hide sidebar on smaller screens or move it */
+    }
+
+    .heroImageWrapper {
+        height: 300px;
+        padding: 0 20px;
+    }
+
+    .contentWrapper {
+        padding: 0 20px;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+}
