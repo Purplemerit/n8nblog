@@ -4,6 +4,8 @@ import { uploadToS3 } from "@/lib/s3";
 import { generateSlug } from "@/lib/articleUtils";
 
 export async function POST(req: NextRequest) {
+    // Hack: Allow self-signed certs for this request (needed for some image hosts)
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
     try {
         // Simple authentication check
         const blogHeader = req.headers.get("blog");
